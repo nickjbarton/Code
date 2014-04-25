@@ -1,0 +1,608 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{72A3DDF0-3AF0-40F0-9A93-FB3096AA6B91}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>build</RootNamespace>
+    <AssemblyName>build</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
+    <Folder Include="tools\apache-ivy-2.3.0\src\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ant\build.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="ant\ivy.xml" />
+    <Content Include="ant\ivyexample.xml" />
+    <Content Include="ant\test.xml" />
+    <Content Include="ant\deploy.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="ant\core.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="ant\package.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="ant\transform.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="packages\MSBuild.Extension.Pack.1.2.0\lib\net35\Interop.COMAdmin.dll" />
+    <Content Include="packages\MSBuild.Extension.Pack.1.2.0\lib\net35\Interop.IWshRuntimeLibrary.dll" />
+    <Content Include="packages\MSBuild.Extension.Pack.1.2.0\lib\net35\Ionic.Zip.dll" />
+    <Content Include="packages\MSBuild.Extension.Pack.1.2.0\lib\net35\MSBuild.ExtensionPack.BizTalk.dll" />
+    <Content Include="packages\MSBuild.Extension.Pack.1.2.0\lib\net35\MSBuild.ExtensionPack.dll" />
+    <Content Include="packages\MSBuild.Extension.Pack.1.2.0\lib\net35\MSBuild.ExtensionPack.Iis7.dll" />
+    <Content Include="packages\MSBuild.Extension.Pack.1.2.0\lib\net35\MSBuild.ExtensionPack.Sql2005.dll" />
+    <Content Include="packages\MSBuild.Extension.Pack.1.2.0\lib\net35\MSBuild.ExtensionPack.Sql2008.dll" />
+    <Content Include="packages\MSBuild.Extension.Pack.1.2.0\lib\net35\MSBuild.ExtensionPack.Sql2012.dll" />
+    <Content Include="packages\MSBuild.Extension.Pack.1.2.0\lib\net35\MSBuild.ExtensionPack.StyleCop.dll" />
+    <Content Include="packages\MSBuild.Extension.Pack.1.2.0\lib\net35\MSBuild.ExtensionPack.Sync.dll" />
+    <Content Include="packages\MSBuild.Extension.Pack.1.2.0\lib\net35\MSBuild.ExtensionPack.Tfs.dll" />
+    <Content Include="packages\MSBuild.Extension.Pack.1.2.0\lib\net35\MSBuild.ExtensionPack.Tfs2010.dll" />
+    <Content Include="packages\MSBuild.Extension.Pack.1.2.0\lib\net35\MSBuild.ExtensionPack.WindowsVirtualPC.dll" />
+    <Content Include="packages\MSBuild.Extension.Pack.1.2.0\lib\net40\Interop.COMAdmin.dll" />
+    <Content Include="packages\MSBuild.Extension.Pack.1.2.0\lib\net40\Interop.IWshRuntimeLibrary.dll" />
+    <Content Include="packages\MSBuild.Extension.Pack.1.2.0\lib\net40\Ionic.Zip.dll" />
+    <Content Include="packages\MSBuild.Extension.Pack.1.2.0\lib\net40\MSBuild.ExtensionPack.BizTalk.dll" />
+    <Content Include="packages\MSBuild.Extension.Pack.1.2.0\lib\net40\MSBuild.ExtensionPack.dll" />
+    <Content Include="packages\MSBuild.Extension.Pack.1.2.0\lib\net40\MSBuild.ExtensionPack.Git.dll" />
+    <Content Include="packages\MSBuild.Extension.Pack.1.2.0\lib\net40\MSBuild.ExtensionPack.Iis7.dll" />
+    <Content Include="packages\MSBuild.Extension.Pack.1.2.0\lib\net40\MSBuild.ExtensionPack.Loggers.dll" />
+    <Content Include="packages\MSBuild.Extension.Pack.1.2.0\lib\net40\MSBuild.ExtensionPack.Sql2005.dll" />
+    <Content Include="packages\MSBuild.Extension.Pack.1.2.0\lib\net40\MSBuild.ExtensionPack.Sql2008.dll" />
+    <Content Include="packages\MSBuild.Extension.Pack.1.2.0\lib\net40\MSBuild.ExtensionPack.Sql2012.dll" />
+    <Content Include="packages\MSBuild.Extension.Pack.1.2.0\lib\net40\MSBuild.ExtensionPack.StyleCop.dll" />
+    <Content Include="packages\MSBuild.Extension.Pack.1.2.0\lib\net40\MSBuild.ExtensionPack.Sync.dll" />
+    <Content Include="packages\MSBuild.Extension.Pack.1.2.0\lib\net40\MSBuild.ExtensionPack.TaskFactory.Dlr.dll" />
+    <Content Include="packages\MSBuild.Extension.Pack.1.2.0\lib\net40\MSBuild.ExtensionPack.TaskFactory.PowerShell.dll" />
+    <Content Include="packages\MSBuild.Extension.Pack.1.2.0\lib\net40\MSBuild.ExtensionPack.Tfs.dll" />
+    <Content Include="packages\MSBuild.Extension.Pack.1.2.0\lib\net40\MSBuild.ExtensionPack.Tfs2010.dll" />
+    <Content Include="packages\MSBuild.Extension.Pack.1.2.0\lib\net40\MSBuild.ExtensionPack.Tfs2012.dll" />
+    <Content Include="packages\MSBuild.Extension.Pack.1.2.0\lib\net40\MSBuild.ExtensionPack.WindowsVirtualPC.dll" />
+    <Content Include="packages\MSBuildTasks.1.4.0.56\tools\MSBuild.Community.Tasks.dll" />
+    <Content Include="packages\MSBuildTasks.1.4.0.56\tools\MSBuild.Community.Tasks.xml" />
+    <Content Include="packages\NuGet.CommandLine.2.7.1\tools\NuGet.exe" />
+    <Content Include="SetEnv.vbs" />
+    <Content Include="svn.revert.txt" />
+    <Content Include="testfile.txt" />
+    <Content Include="tools\agent\conf\teamcity-agent-log4j.xml" />
+    <Content Include="tools\agent\launcher\bin\TeamCityAgentService-windows-x86-32.exe" />
+    <Content Include="tools\agent\launcher\bin\TeamCityAgentService-windows-x86-64.exe" />
+    <Content Include="tools\agent\launcher\JavaServiceWrapperLicense.txt" />
+    <Content Include="tools\agent\launcher\lib\agent-launcher.jar" />
+    <Content Include="tools\agent\launcher\lib\annotations.jar" />
+    <Content Include="tools\agent\launcher\lib\launcher.jar" />
+    <Content Include="tools\agent\launcher\lib\log4j-1.2.12.jar" />
+    <Content Include="tools\agent\launcher\lib\wrapper-windows-x86-32.dll" />
+    <Content Include="tools\agent\launcher\lib\wrapper-windows-x86-64.dll" />
+    <Content Include="tools\agent\launcher\lib\wrapper.jar" />
+    <Content Include="tools\agent\lib\agent-launcher.jar" />
+    <Content Include="tools\agent\lib\agent-openapi.jar" />
+    <Content Include="tools\agent\lib\agent.jar" />
+    <Content Include="tools\agent\lib\agentInstaller-UI.jar" />
+    <Content Include="tools\agent\lib\agentInstaller.jar" />
+    <Content Include="tools\agent\lib\annotations.jar" />
+    <Content Include="tools\agent\lib\common-impl.jar" />
+    <Content Include="tools\agent\lib\common-runtime.jar" />
+    <Content Include="tools\agent\lib\common.jar" />
+    <Content Include="tools\agent\lib\commons-beanutils-core.jar" />
+    <Content Include="tools\agent\lib\commons-codec-1.3.jar" />
+    <Content Include="tools\agent\lib\commons-collections-3.2.1.jar" />
+    <Content Include="tools\agent\lib\commons-compress-1.3-SNAPSHOT.jar" />
+    <Content Include="tools\agent\lib\commons-httpclient-3.1.jar" />
+    <Content Include="tools\agent\lib\commons-io-1.3.2.jar" />
+    <Content Include="tools\agent\lib\commons-logging.jar" />
+    <Content Include="tools\agent\lib\coverage-agent-common.jar" />
+    <Content Include="tools\agent\lib\coverage-report.jar" />
+    <Content Include="tools\agent\lib\duplicator-util.jar" />
+    <Content Include="tools\agent\lib\ehcache-1.6.0-patch.jar" />
+    <Content Include="tools\agent\lib\ehcache-1.6.0.jar" />
+    <Content Include="tools\agent\lib\freemarker.jar" />
+    <Content Include="tools\agent\lib\idea-settings.jar" />
+    <Content Include="tools\agent\lib\inspections-util.jar" />
+    <Content Include="tools\agent\lib\ivy-2.1.0.jar" />
+    <Content Include="tools\agent\lib\jakarta-oro-2.0.8.jar" />
+    <Content Include="tools\agent\lib\jaxen-1.1.1.jar" />
+    <Content Include="tools\agent\lib\jdk-searcher.jar" />
+    <Content Include="tools\agent\lib\jdom.jar" />
+    <Content Include="tools\agent\lib\joda-time-1.5.2.jar" />
+    <Content Include="tools\agent\lib\launcher.jar" />
+    <Content Include="tools\agent\lib\log4j-1.2.12.jar" />
+    <Content Include="tools\agent\lib\messages.jar" />
+    <Content Include="tools\agent\lib\openapi.jar" />
+    <Content Include="tools\agent\lib\patches-impl.jar" />
+    <Content Include="tools\agent\lib\patches.jar" />
+    <Content Include="tools\agent\lib\processesTerminator.jar" />
+    <Content Include="tools\agent\lib\resources_en.jar" />
+    <Content Include="tools\agent\lib\runtime-util.jar" />
+    <Content Include="tools\agent\lib\server-logging.jar" />
+    <Content Include="tools\agent\lib\serviceMessages.jar" />
+    <Content Include="tools\agent\lib\slf4j-api-1.5.11.jar" />
+    <Content Include="tools\agent\lib\slf4j-simple-1.5.11.jar" />
+    <Content Include="tools\agent\lib\spring.jar" />
+    <Content Include="tools\agent\lib\trove4j.jar" />
+    <Content Include="tools\agent\lib\util.jar" />
+    <Content Include="tools\agent\lib\xercesImpl.jar" />
+    <Content Include="tools\agent\lib\xml-rpc-wrapper.jar" />
+    <Content Include="tools\agent\lib\xmlrpc-2.0.1.jar" />
+    <Content Include="tools\agent\lib\xpp3-1.1.4c.jar" />
+    <Content Include="tools\agent\lib\xstream-1.4-20110423.112604-3.jar" />
+    <Content Include="tools\agent\plugins\amazonEC2\lib\cloud-amazon-agent.jar" />
+    <Content Include="tools\agent\plugins\amazonEC2\lib\cloud-amazon-shared.jar" />
+    <Content Include="tools\agent\plugins\amazonEC2\lib\cloud-shared.jar" />
+    <Content Include="tools\ant\apache-ant-1.9.0\bin\runant.py" />
+    <Content Include="tools\ant\apache-ant-1.9.0\etc\ant-bootstrap.jar" />
+    <Content Include="tools\ant\apache-ant-1.9.0\etc\changelog.xsl" />
+    <Content Include="tools\ant\apache-ant-1.9.0\etc\checkstyle\checkstyle-frames.xsl" />
+    <Content Include="tools\ant\apache-ant-1.9.0\etc\checkstyle\checkstyle-text.xsl" />
+    <Content Include="tools\ant\apache-ant-1.9.0\etc\checkstyle\checkstyle-xdoc.xsl" />
+    <Content Include="tools\ant\apache-ant-1.9.0\etc\coverage-frames.xsl" />
+    <Content Include="tools\ant\apache-ant-1.9.0\etc\jdepend-frames.xsl" />
+    <Content Include="tools\ant\apache-ant-1.9.0\etc\jdepend.xsl" />
+    <Content Include="tools\ant\apache-ant-1.9.0\etc\junit-frames-xalan1.xsl" />
+    <Content Include="tools\ant\apache-ant-1.9.0\etc\junit-frames.xsl" />
+    <Content Include="tools\ant\apache-ant-1.9.0\etc\junit-noframes.xsl" />
+    <Content Include="tools\ant\apache-ant-1.9.0\etc\log.xsl" />
+    <Content Include="tools\ant\apache-ant-1.9.0\etc\maudit-frames.xsl" />
+    <Content Include="tools\ant\apache-ant-1.9.0\etc\mmetrics-frames.xsl" />
+    <Content Include="tools\ant\apache-ant-1.9.0\etc\tagdiff.xsl" />
+    <Content Include="tools\ant\apache-ant-1.9.0\fetch.xml" />
+    <Content Include="tools\ant\apache-ant-1.9.0\get-m2.xml" />
+    <Content Include="tools\ant\apache-ant-1.9.0\lib\ant-antlr.jar" />
+    <Content Include="tools\ant\apache-ant-1.9.0\lib\ant-apache-bcel.jar" />
+    <Content Include="tools\ant\apache-ant-1.9.0\lib\ant-apache-bsf.jar" />
+    <Content Include="tools\ant\apache-ant-1.9.0\lib\ant-apache-log4j.jar" />
+    <Content Include="tools\ant\apache-ant-1.9.0\lib\ant-apache-oro.jar" />
+    <Content Include="tools\ant\apache-ant-1.9.0\lib\ant-apache-regexp.jar" />
+    <Content Include="tools\ant\apache-ant-1.9.0\lib\ant-apache-resolver.jar" />
+    <Content Include="tools\ant\apache-ant-1.9.0\lib\ant-apache-xalan2.jar" />
+    <Content Include="tools\ant\apache-ant-1.9.0\lib\ant-commons-logging.jar" />
+    <Content Include="tools\ant\apache-ant-1.9.0\lib\ant-commons-net.jar" />
+    <Content Include="tools\ant\apache-ant-1.9.0\lib\ant-contrib-1.0b3.jar" />
+    <Content Include="tools\ant\apache-ant-1.9.0\lib\ant-jai.jar" />
+    <Content Include="tools\ant\apache-ant-1.9.0\lib\ant-javamail.jar" />
+    <Content Include="tools\ant\apache-ant-1.9.0\lib\ant-jdepend.jar" />
+    <Content Include="tools\ant\apache-ant-1.9.0\lib\ant-jmf.jar" />
+    <Content Include="tools\ant\apache-ant-1.9.0\lib\ant-jsch.jar" />
+    <Content Include="tools\ant\apache-ant-1.9.0\lib\ant-junit.jar" />
+    <Content Include="tools\ant\apache-ant-1.9.0\lib\ant-junit4.jar" />
+    <Content Include="tools\ant\apache-ant-1.9.0\lib\ant-launcher.jar" />
+    <Content Include="tools\ant\apache-ant-1.9.0\lib\ant-netrexx.jar" />
+    <Content Include="tools\ant\apache-ant-1.9.0\lib\ant-swing.jar" />
+    <Content Include="tools\ant\apache-ant-1.9.0\lib\ant-testutil.jar" />
+    <Content Include="tools\ant\apache-ant-1.9.0\lib\ant.jar" />
+    <Content Include="tools\ant\apache-ant-1.9.0\lib\ivy-2.3.0.jar" />
+    <Content Include="tools\ant\apache-ant-1.9.0\lib\jsch-0.1.49%281%29.jar" />
+    <Content Include="tools\apache-ivy-2.3.0\cmdlineexample.txt" />
+    <Content Include="tools\apache-ivy-2.3.0\ivy-2.3.0.jar" />
+    <Content Include="tools\apache-ivy-2.3.0\ivy.xml" />
+    <Content Include="tools\apache-ivy-2.3.0\ivyconf.xml" />
+    <Content Include="tools\apache-ivy-2.3.0\lib\commons-codec-1.2.jar" />
+    <Content Include="tools\apache-ivy-2.3.0\lib\commons-httpclient-3.0.jar" />
+    <Content Include="tools\apache-ivy-2.3.0\lib\commons-logging-1.0.4.jar" />
+    <Content Include="tools\apache-ivy-2.3.0\lib\commons-vfs-1.0.jar" />
+    <Content Include="tools\apache-ivy-2.3.0\lib\jsch-0.1.31.jar" />
+    <Content Include="tools\apache-ivy-2.3.0\lib\oro-2.0.8.jar" />
+    <Content Include="tools\ctt.exe" />
+    <Content Include="tools\robocopy.exe" />
+    <Content Include="tools\svnkit\CHANGES.txt" />
+    <Content Include="tools\svnkit\lib\antlr-runtime-3.4.jar" />
+    <Content Include="tools\svnkit\lib\jna-3.4.0.jar" />
+    <Content Include="tools\svnkit\lib\sequence-library-1.0.2.jar" />
+    <Content Include="tools\svnkit\lib\sqljet-1.1.7.jar" />
+    <Content Include="tools\svnkit\lib\svnkit-1.7.9.jar" />
+    <Content Include="tools\svnkit\lib\svnkit-cli-1.7.9.jar" />
+    <Content Include="tools\svnkit\lib\svnkit-javahl16-1.7.9.jar" />
+    <Content Include="tools\svnkit\lib\trilead-ssh2-1.0.0-build216.jar" />
+    <Content Include="tools\svnkit\LICENSE.txt" />
+    <Content Include="tools\svnkit\licenses\LICENSE-ANTLR.txt" />
+    <Content Include="tools\svnkit\licenses\LICENSE-JAVAHL.txt" />
+    <Content Include="tools\svnkit\licenses\LICENSE-JNA.txt" />
+    <Content Include="tools\svnkit\licenses\LICENSE-SEQUENCE.txt" />
+    <Content Include="tools\svnkit\licenses\LICENSE-SQLJET.txt" />
+    <Content Include="tools\svnkit\licenses\LICENSE-TRILEAD.txt" />
+    <Content Include="tools\svnkit\README.txt" />
+    <Content Include="tools\svnkit\src\svnkit-1.7.9-sources.jar" />
+    <Content Include="tools\svnkit\src\svnkit-cli-1.7.9-sources.jar" />
+    <Content Include="tools\svnkit\src\svnkit-javahl16-1.7.9-sources.jar" />
+    <Content Include="vbs\config-db.vbs" />
+    <Content Include="vbs\FindFiles.vbs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ant\application\batchutility.properties" />
+    <None Include="ant\application\build.properties" />
+    <None Include="ant\application\CEMT.properties" />
+    <None Include="ant\application\Adaptiv.properties" />
+    <None Include="ant\application\ControlRoom.properties" />
+    <None Include="ant\application\verde.oar.properties" />
+    <None Include="ant\application\ICRS-MI.properties" />
+    <None Include="ant\application\volcker.properties" />
+    <None Include="ant\application\fact.properties" />
+    <None Include="ant\application\MonitorControllerService.properties" />
+    <None Include="ant\application\InputFileValidation.properties" />
+    <None Include="ant\application\Maestro.properties" />
+    <None Include="ant\application\RiskAlerter.properties" />
+    <None Include="ant\application\RiskNet.properties" />
+    <None Include="ant\application\RITA.properties" />
+    <None Include="ant\application\RiskDashboard.properties" />
+    <None Include="ant\application\ICRS.properties" />
+    <None Include="ant\application\oar.properties" />
+    <None Include="ant\application\Trecs.properties" />
+    <None Include="ant\environments\Adaptiv\Adaptiv.local\Adaptiv.local.properties" />
+    <None Include="ant\environments\Adaptiv\tokens\clean.properties" />
+    <None Include="ant\environments\Adaptiv\tokens\UAT.properties" />
+    <None Include="ant\environments\Adaptiv\tokens\prod.properties" />
+    <None Include="ant\environments\Adaptiv\tokens\Local.properties" />
+    <None Include="ant\environments\batchutility\batchutility.Local\batchutility.Local.properties" />
+    <None Include="ant\environments\batchutility\batchutility.uat\BatchUtility.uat.properties" />
+    <None Include="ant\environments\batchutility\batchutility.prep\BatchUtility.prep.properties" />
+    <None Include="ant\environments\batchutility\tokens\uat.properties" />
+    <None Include="ant\environments\batchutility\tokens\Local.properties" />
+    <None Include="ant\environments\batchutility\tokens\prep.properties" />
+    <None Include="ant\environments\CEMT\CEMT.DEV02\CEMT.dev02.properties" />
+    <None Include="ant\environments\CEMT\CEMT.DEV03\CEMT.dev03.properties" />
+    <None Include="ant\environments\CEMT\CEMT.DEV04\CEMT.dev04.properties" />
+    <None Include="ant\environments\CEMT\CEMT.DEV05\CEMT.dev05.properties" />
+    <None Include="ant\environments\CEMT\CEMT.DEV06\CEMT.dev06.properties" />
+    <None Include="ant\environments\CEMT\CEMT.Local\CEMT.Local.properties" />
+    <None Include="ant\environments\CEMT\CEMT.DEV01\CEMT.dev01.properties" />
+    <None Include="ant\environments\CEMT\tokens\prep.properties" />
+    <None Include="ant\environments\CEMT\tokens\uat01.properties" />
+    <None Include="ant\environments\CEMT\tokens\uat02.properties" />
+    <None Include="ant\environments\CEMT\tokens\uat03.properties" />
+    <None Include="ant\environments\CEMT\tokens\uat04.properties" />
+    <None Include="ant\environments\CEMT\tokens\uat05.properties" />
+    <None Include="ant\environments\CEMT\tokens\dev06.properties" />
+    <None Include="ant\environments\CEMT\tokens\dev05.properties" />
+    <None Include="ant\environments\CEMT\tokens\dev03.properties" />
+    <None Include="ant\environments\CEMT\tokens\dev04.properties" />
+    <None Include="ant\environments\CEMT\tokens\dev02.properties" />
+    <None Include="ant\environments\CEMT\tokens\dev01.properties" />
+    <None Include="ant\environments\CEMT\tokens\Local.properties" />
+    <None Include="ant\environments\common.properties" />
+    <None Include="ant\environments\verde.OAR\tokens\Dev.properties" />
+    <None Include="ant\environments\verde.OAR\verde.OAR.Dev\verde.OAR.Dev.properties" />
+    <None Include="ant\environments\verde.OAR\verde.OAR.Local\verde.OAR.Local.properties" />
+    <None Include="ant\environments\verde.OAR\tokens\Local.properties" />
+    <None Include="ant\environments\InputFileValidation\InputFileValidation.dev\InputFileValidation.dev.properties" />
+    <None Include="ant\environments\InputFileValidation\InputFileValidation.prod\InputFileValidation.prod.properties" />
+    <None Include="ant\environments\InputFileValidation\InputFileValidation.dr\InputFileValidation.dr.properties" />
+    <None Include="ant\environments\InputFileValidation\InputFileValidation.local\InputFileValidation.local.properties" />
+    <None Include="ant\environments\InputFileValidation\InputFileValidation.uat\InputFileValidation.uat.properties" />
+    <None Include="ant\environments\InputFileValidation\tokens\clean.properties" />
+    <None Include="ant\environments\InputFileValidation\tokens\dev.properties" />
+    <None Include="ant\environments\InputFileValidation\tokens\dr.properties" />
+    <None Include="ant\environments\InputFileValidation\tokens\local.properties" />
+    <None Include="ant\environments\InputFileValidation\tokens\prod.properties" />
+    <None Include="ant\environments\InputFileValidation\tokens\uat.properties" />
+    <None Include="ant\environments\Maestro\Maestro.Local\Maestro.Local.properties" />
+    <None Include="ant\environments\Maestro\tokens\clean.properties" />
+    <None Include="ant\environments\Maestro\tokens\prod.properties" />
+    <None Include="ant\environments\Maestro\tokens\local.properties" />
+    <None Include="ant\environments\MonitorControllerService\MonitorControllerService.local\MonitorControllerService.local.properties" />
+    <None Include="ant\environments\MonitorControllerService\tokens\clean.properties" />
+    <None Include="ant\environments\MonitorControllerService\tokens\local.properties" />
+    <None Include="ant\environments\OAR\OAR.DR\OAR.DR.properties" />
+    <None Include="ant\environments\RiskAlerter\RiskAlerter.dr\RiskAlerter.dr.properties" />
+    <None Include="ant\environments\RiskAlerter\RiskAlerter.local\RiskAlerter.Local.properties" />
+    <None Include="ant\environments\RiskAlerter\RiskAlerter.prod\RiskAlerter.prod.properties" />
+    <None Include="ant\environments\RiskAlerter\RiskAlerter.uat\RiskAlerter.uat.properties" />
+    <None Include="ant\environments\RiskAlerter\tokens\clean.properties" />
+    <None Include="ant\environments\RiskAlerter\tokens\dr.properties" />
+    <None Include="ant\environments\RiskAlerter\tokens\local.properties" />
+    <None Include="ant\environments\RiskAlerter\tokens\prod.properties" />
+    <None Include="ant\environments\RiskAlerter\tokens\uat.properties" />
+    <None Include="ant\environments\RiskDashboard\RiskDashboard.dr\RiskDashboard.dr.properties" />
+    <None Include="ant\environments\RiskDashboard\RiskDashboard.prod\RiskDashboard.prod.properties" />
+    <None Include="ant\environments\RiskDashboard\RiskDashboard.uat\RiskDashboard.uat.properties" />
+    <None Include="ant\environments\RiskDashboard\tokens\dr.properties" />
+    <None Include="ant\environments\RiskNet\RiskNet.Local\RiskNet.local.properties" />
+    <None Include="ant\environments\RiskNet\tokens\clean.properties" />
+    <None Include="ant\environments\RiskNet\tokens\local.properties" />
+    <None Include="ant\environments\ICRS\ICRS.Local\ICRS.Local.properties" />
+    <None Include="ant\environments\ICRS\ICRS.UAT\ICRS.UAT.properties" />
+    <None Include="ant\environments\ICRS\tokens\clean.properties" />
+    <None Include="ant\environments\ICRS\tokens\UAT.properties" />
+    <None Include="ant\environments\ICRS\tokens\dev1.properties" />
+    <None Include="ant\environments\ICRS\tokens\Local.properties" />
+    <None Include="ant\environments\OAR\OAR.Dev\OAR.Dev.properties" />
+    <None Include="ant\environments\OAR\OAR.UAT\OAR.UAT.properties" />
+    <None Include="ant\environments\OAR\tokens\alfa.properties" />
+    <None Include="ant\environments\OAR\tokens\UAT.properties" />
+    <None Include="ant\environments\OAR\tokens\Prod.properties" />
+    <None Include="ant\environments\OAR\tokens\SCFT.properties" />
+    <None Include="ant\environments\OAR\tokens\SCFT_Regression_Test.properties" />
+    <None Include="ant\environments\OAR\OAR.Local\OAR.Local.properties" />
+    <None Include="ant\environments\OAR\tokens\Local.properties" />
+    <None Include="ant\environments\OAR\tokens\Bravo.properties" />
+    <None Include="ant\environments\OAR\tokens\Charlie.properties" />
+    <None Include="ant\environments\OAR\OAR.Prod\OAR.Prod.properties" />
+    <None Include="ant\environments\RiskDashboard\RiskDashboard.local\RiskDashboard.local.properties" />
+    <None Include="ant\environments\RiskDashboard\tokens\clean.properties" />
+    <None Include="ant\environments\RiskDashboard\tokens\local.properties" />
+    <None Include="ant\environments\RiskDashboard\tokens\prod.properties" />
+    <None Include="ant\environments\RiskDashboard\tokens\uat.properties" />
+    <None Include="ant\environments\RiskNet\tokens\Prod.properties" />
+    <None Include="ant\environments\RITA\RITA.Local\RITA.Local.properties" />
+    <None Include="ant\environments\RITA\tokens\clean.properties" />
+    <None Include="ant\environments\RITA\tokens\Prod.properties" />
+    <None Include="ant\environments\RITA\tokens\Local.properties" />
+    <None Include="ant\environments\TRecs\tokens\Dev.properties" />
+    <None Include="ant\environments\TRecs\tokens\Local.properties" />
+    <None Include="ant\environments\TRecs\tokens\Prod.properties" />
+    <None Include="ant\environments\TRecs\TRecs.Dev\TRecs.Dev.properties" />
+    <None Include="ant\environments\TRecs\TRecs.Local\TRecs.Local.properties" />
+    <None Include="ant\environments\TRecs\TRecs.Prod\TRecs.Prod.properties" />
+    <None Include="ant\environments\verde.OAR\verde.OAR.Prod\verde.OAR.Prod.properties" />
+    <None Include="ant\environments\verde.OAR\verde.OAR.Uat\verde.OAR.Uat.properties" />
+    <None Include="Build.proj" />
+    <None Include="deploy\bin\common.ksh" />
+    <None Include="deploy\bin\mergecheck.ksh" />
+    <None Include="deploy\bin\mlcdeploy.ksh" />
+    <None Include="deploy\bin\mlcmondeploy.ksh" />
+    <None Include="deploy\bin\mlctest.ksh" />
+    <None Include="deploy\bin\utils\getProperty.pl" />
+    <None Include="deploy\bin\utils\parse.pl" />
+    <None Include="deploy\bin\utils\rsync" />
+    <None Include="deploy\envs\mlc\mlc_dev_46.kv" />
+    <None Include="deploy\envs\mlc\mlc_prod_1.kv" />
+    <None Include="deploy\scripts\mlc\bin\common.ksh" />
+    <None Include="deploy\scripts\mlc\bin\mlcadmin.ksh" />
+    <None Include="deploy\scripts\mlc\bin\mlcload_config.ksh" />
+    <None Include="deploy\scripts\mlc\bin\mlctask_config.ksh" />
+    <None Include="deploy\scripts\mlc\bin\mlctask_release.ksh" />
+    <None Include="deploy\scripts\mlc\bin\mlctask_rollback.ksh" />
+    <None Include="deploy\scripts\mlc\bin\mlctask_stage.ksh" />
+    <None Include="deploy\scripts\mlc\bin\utils\getProperty.pl" />
+    <None Include="deploy\scripts\mlc\bin\utils\parse.pl" />
+    <None Include="msbuild\build.msbuild">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="msbuild\nuget.msbuild" />
+    <None Include="msbuild\service.msbuild">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="msbuild\deploy.msbuild">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="msbuild\itemdefintion.msbuild" />
+    <None Include="msbuild\package.msbuild">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="msbuild\Scratch.msbuild" />
+    <None Include="msbuild\file.msbuild" />
+    <None Include="msbuild\Iterate.msbuild" />
+    <None Include="msbuild\test.msbuild" />
+    <None Include="msbuild\testing.msbuild" />
+    <None Include="msbuild\version.msbuild">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages\MSBuild.Extension.Pack.1.2.0\lib\net35\MSBuild.ExtensionPack.dll.config" />
+    <None Include="packages\MSBuild.Extension.Pack.1.2.0\lib\net35\MSBuild.ExtensionPack.tasks" />
+    <None Include="packages\MSBuild.Extension.Pack.1.2.0\lib\net35\MSBuild.ExtensionPack.VersionNumber.targets" />
+    <None Include="packages\MSBuild.Extension.Pack.1.2.0\lib\net40\MSBuild.ExtensionPack.dll.config" />
+    <None Include="packages\MSBuild.Extension.Pack.1.2.0\lib\net40\MSBuild.ExtensionPack.tasks" />
+    <None Include="packages\MSBuild.Extension.Pack.1.2.0\lib\net40\MSBuild.ExtensionPack.VersionNumber.targets" />
+    <None Include="packages\MSBuild.Extension.Pack.1.2.0\MSBuild.Extension.Pack.1.2.0.nupkg" />
+    <None Include="packages\MSBuild.Extension.Pack.1.2.0\MSBuild.Extension.Pack.1.2.0.nuspec" />
+    <None Include="packages\MSBuildTasks.1.4.0.56\content\MSBuild.Community.Tasks.ReadMe.md" />
+    <None Include="packages\MSBuildTasks.1.4.0.56\MSBuildTasks.1.4.0.56.nupkg" />
+    <None Include="packages\MSBuildTasks.1.4.0.56\MSBuildTasks.1.4.0.56.nuspec" />
+    <None Include="packages\MSBuildTasks.1.4.0.56\tools\Build.proj" />
+    <None Include="packages\MSBuildTasks.1.4.0.56\tools\Install.ps1" />
+    <None Include="packages\MSBuildTasks.1.4.0.56\tools\MSBuild.Community.Tasks.Targets" />
+    <None Include="packages\MSBuildTasks.1.4.0.56\tools\MSBuild.psm1" />
+    <None Include="packages\NuGet.CommandLine.2.7.1\NuGet.CommandLine.2.7.1.nupkg" />
+    <None Include="packages\NuGet.CommandLine.2.7.1\NuGet.CommandLine.2.7.1.nuspec" />
+    <None Include="packages\repositories.config" />
+    <None Include="Powershell\copy.ps1" />
+    <None Include="Powershell\ignore.ps1" />
+    <None Include="Powershell\migrate_adaptiv.bat" />
+    <None Include="Powershell\migrate_cemt.bat" />
+    <None Include="Powershell\migrate_euc.bat" />
+    <None Include="Powershell\migrate_icrs-mi.bat" />
+    <None Include="Powershell\migrate_icrs.bat" />
+    <None Include="Powershell\migrate_oar.bat" />
+    <None Include="Powershell\migrate_rita.bat" />
+    <None Include="Powershell\migrate_verde.bat" />
+    <None Include="Powershell\svn.ps1" />
+    <None Include="tools\agent\bin\agent.bat" />
+    <None Include="tools\agent\bin\agent.sh" />
+    <None Include="tools\agent\bin\changeAgentProps.bat" />
+    <None Include="tools\agent\bin\findJava.bat" />
+    <None Include="tools\agent\bin\findJava.sh" />
+    <None Include="tools\agent\bin\generateNewServiceName.bat" />
+    <None Include="tools\agent\bin\install.bat" />
+    <None Include="tools\agent\bin\install.sh" />
+    <None Include="tools\agent\bin\installJava.bat" />
+    <None Include="tools\agent\bin\jetbrains.teamcity.BuildAgent.plist" />
+    <None Include="tools\agent\bin\jetbrains.teamcity.BuildAgentUpgrade.plist.dist" />
+    <None Include="tools\agent\bin\mac.launchd.sh" />
+    <None Include="tools\agent\bin\service.install.bat" />
+    <None Include="tools\agent\bin\service.start.bat" />
+    <None Include="tools\agent\bin\service.stop.bat" />
+    <None Include="tools\agent\bin\service.uninstall.bat" />
+    <None Include="tools\agent\bin\uninstall.bat" />
+    <None Include="tools\agent\BUILD_24400" />
+    <None Include="tools\agent\conf\buildAgent.dist.properties" />
+    <None Include="tools\agent\conf\buildAgent.properties" />
+    <None Include="tools\agent\conf\log4j.dtd" />
+    <None Include="tools\agent\contrib\zos\README" />
+    <None Include="tools\agent\contrib\zos\restart.sh" />
+    <None Include="tools\agent\contrib\zos\start.sh" />
+    <None Include="tools\agent\launcher\bin\TeamCityAgentService-linux-ppc-64" />
+    <None Include="tools\agent\launcher\bin\TeamCityAgentService-linux-x86-32" />
+    <None Include="tools\agent\launcher\bin\TeamCityAgentService-linux-x86-64" />
+    <None Include="tools\agent\launcher\bin\TeamCityAgentService-macosx-ppc-32" />
+    <None Include="tools\agent\launcher\bin\TeamCityAgentService-macosx-universal-32" />
+    <None Include="tools\agent\launcher\bin\TeamCityAgentService-solaris-sparc-32" />
+    <None Include="tools\agent\launcher\bin\TeamCityAgentService-solaris-sparc-64" />
+    <None Include="tools\agent\launcher\bin\TeamCityAgentService-solaris-x86-32" />
+    <None Include="tools\agent\launcher\conf\wrapper.conf" />
+    <None Include="tools\agent\launcher\lib\libwrapper-macosx-ppc-32.jnilib" />
+    <None Include="tools\agent\launcher\lib\libwrapper-macosx-universal-32.jnilib" />
+    <None Include="tools\ant\apache-ant-1.9.0\bin\ant" />
+    <None Include="tools\ant\apache-ant-1.9.0\bin\ant.bat" />
+    <None Include="tools\ant\apache-ant-1.9.0\bin\ant.cmd" />
+    <None Include="tools\ant\apache-ant-1.9.0\bin\antenv.cmd" />
+    <None Include="tools\ant\apache-ant-1.9.0\bin\antRun" />
+    <None Include="tools\ant\apache-ant-1.9.0\bin\antRun.bat" />
+    <None Include="tools\ant\apache-ant-1.9.0\bin\antRun.pl" />
+    <None Include="tools\ant\apache-ant-1.9.0\bin\complete-ant-cmd.pl" />
+    <None Include="tools\ant\apache-ant-1.9.0\bin\envset.cmd" />
+    <None Include="tools\ant\apache-ant-1.9.0\bin\lcp.bat" />
+    <None Include="tools\ant\apache-ant-1.9.0\bin\runant.pl" />
+    <None Include="tools\ant\apache-ant-1.9.0\bin\runrc.cmd" />
+    <None Include="tools\ant\apache-ant-1.9.0\INSTALL" />
+    <None Include="tools\ant\apache-ant-1.9.0\KEYS" />
+    <None Include="tools\ant\apache-ant-1.9.0\lib\ant-antlr.pom" />
+    <None Include="tools\ant\apache-ant-1.9.0\lib\ant-apache-bcel.pom" />
+    <None Include="tools\ant\apache-ant-1.9.0\lib\ant-apache-bsf.pom" />
+    <None Include="tools\ant\apache-ant-1.9.0\lib\ant-apache-log4j.pom" />
+    <None Include="tools\ant\apache-ant-1.9.0\lib\ant-apache-oro.pom" />
+    <None Include="tools\ant\apache-ant-1.9.0\lib\ant-apache-regexp.pom" />
+    <None Include="tools\ant\apache-ant-1.9.0\lib\ant-apache-resolver.pom" />
+    <None Include="tools\ant\apache-ant-1.9.0\lib\ant-apache-xalan2.pom" />
+    <None Include="tools\ant\apache-ant-1.9.0\lib\ant-commons-logging.pom" />
+    <None Include="tools\ant\apache-ant-1.9.0\lib\ant-commons-net.pom" />
+    <None Include="tools\ant\apache-ant-1.9.0\lib\ant-jai.pom" />
+    <None Include="tools\ant\apache-ant-1.9.0\lib\ant-javamail.pom" />
+    <None Include="tools\ant\apache-ant-1.9.0\lib\ant-jdepend.pom" />
+    <None Include="tools\ant\apache-ant-1.9.0\lib\ant-jmf.pom" />
+    <None Include="tools\ant\apache-ant-1.9.0\lib\ant-jsch.pom" />
+    <None Include="tools\ant\apache-ant-1.9.0\lib\ant-junit.pom" />
+    <None Include="tools\ant\apache-ant-1.9.0\lib\ant-junit4.pom" />
+    <None Include="tools\ant\apache-ant-1.9.0\lib\ant-launcher.pom" />
+    <None Include="tools\ant\apache-ant-1.9.0\lib\ant-netrexx.pom" />
+    <None Include="tools\ant\apache-ant-1.9.0\lib\ant-parent.pom" />
+    <None Include="tools\ant\apache-ant-1.9.0\lib\ant-swing.pom" />
+    <None Include="tools\ant\apache-ant-1.9.0\lib\ant-testutil.pom" />
+    <None Include="tools\ant\apache-ant-1.9.0\lib\ant.pom" />
+    <None Include="tools\ant\apache-ant-1.9.0\lib\libraries.properties" />
+    <None Include="tools\ant\apache-ant-1.9.0\lib\README" />
+    <None Include="tools\ant\apache-ant-1.9.0\LICENSE" />
+    <None Include="tools\ant\apache-ant-1.9.0\NOTICE" />
+    <None Include="tools\ant\apache-ant-1.9.0\README" />
+    <None Include="tools\ant\apache-ant-1.9.0\WHATSNEW" />
+    <None Include="tools\apache-ivy-2.3.0\ivy.xml.orig" />
+    <None Include="tools\apache-ivy-2.3.0\ivy.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="tools\rsync" />
+    <None Include="tools\svnkit\bin\jsvn" />
+    <None Include="tools\svnkit\bin\jsvnadmin" />
+    <None Include="tools\svnkit\bin\jsvndumpfilter" />
+    <None Include="tools\svnkit\bin\jsvnlook" />
+    <None Include="tools\svnkit\bin\jsvnsetup.openvms" />
+    <None Include="tools\svnkit\bin\jsvnsync" />
+    <None Include="tools\svnkit\bin\jsvnversion" />
+    <None Include="tools\svnkit\bin\svn" />
+    <None Include="tools\svnkit\conf\logging.properties.disabled" />
+    <None Include="tools\teamcity\buildAgentPROD.zip" />
+    <None Include="tools\teamcity\buildAgentUAT.zip" />
+    <None Include="version.template" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Interop.COMAdmin">
+      <HintPath>packages\MSBuild.Extension.Pack.1.2.0\lib\net40\Interop.COMAdmin.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Interop.IWshRuntimeLibrary">
+      <HintPath>packages\MSBuild.Extension.Pack.1.2.0\lib\net40\Interop.IWshRuntimeLibrary.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Ionic.Zip">
+      <HintPath>packages\MSBuild.Extension.Pack.1.2.0\lib\net40\Ionic.Zip.dll</HintPath>
+    </Reference>
+    <Reference Include="MSBuild.ExtensionPack">
+      <HintPath>packages\MSBuild.Extension.Pack.1.2.0\lib\net40\MSBuild.ExtensionPack.dll</HintPath>
+    </Reference>
+    <Reference Include="MSBuild.ExtensionPack.BizTalk">
+      <HintPath>packages\MSBuild.Extension.Pack.1.2.0\lib\net40\MSBuild.ExtensionPack.BizTalk.dll</HintPath>
+    </Reference>
+    <Reference Include="MSBuild.ExtensionPack.Git">
+      <HintPath>packages\MSBuild.Extension.Pack.1.2.0\lib\net40\MSBuild.ExtensionPack.Git.dll</HintPath>
+    </Reference>
+    <Reference Include="MSBuild.ExtensionPack.Iis7">
+      <HintPath>packages\MSBuild.Extension.Pack.1.2.0\lib\net40\MSBuild.ExtensionPack.Iis7.dll</HintPath>
+    </Reference>
+    <Reference Include="MSBuild.ExtensionPack.Loggers">
+      <HintPath>packages\MSBuild.Extension.Pack.1.2.0\lib\net40\MSBuild.ExtensionPack.Loggers.dll</HintPath>
+    </Reference>
+    <Reference Include="MSBuild.ExtensionPack.Sql2005">
+      <HintPath>packages\MSBuild.Extension.Pack.1.2.0\lib\net40\MSBuild.ExtensionPack.Sql2005.dll</HintPath>
+    </Reference>
+    <Reference Include="MSBuild.ExtensionPack.Sql2008">
+      <HintPath>packages\MSBuild.Extension.Pack.1.2.0\lib\net40\MSBuild.ExtensionPack.Sql2008.dll</HintPath>
+    </Reference>
+    <Reference Include="MSBuild.ExtensionPack.Sql2012">
+      <HintPath>packages\MSBuild.Extension.Pack.1.2.0\lib\net40\MSBuild.ExtensionPack.Sql2012.dll</HintPath>
+    </Reference>
+    <Reference Include="MSBuild.ExtensionPack.StyleCop">
+      <HintPath>packages\MSBuild.Extension.Pack.1.2.0\lib\net40\MSBuild.ExtensionPack.StyleCop.dll</HintPath>
+    </Reference>
+    <Reference Include="MSBuild.ExtensionPack.Sync">
+      <HintPath>packages\MSBuild.Extension.Pack.1.2.0\lib\net40\MSBuild.ExtensionPack.Sync.dll</HintPath>
+    </Reference>
+    <Reference Include="MSBuild.ExtensionPack.TaskFactory.Dlr">
+      <HintPath>packages\MSBuild.Extension.Pack.1.2.0\lib\net40\MSBuild.ExtensionPack.TaskFactory.Dlr.dll</HintPath>
+    </Reference>
+    <Reference Include="MSBuild.ExtensionPack.TaskFactory.PowerShell">
+      <HintPath>packages\MSBuild.Extension.Pack.1.2.0\lib\net40\MSBuild.ExtensionPack.TaskFactory.PowerShell.dll</HintPath>
+    </Reference>
+    <Reference Include="MSBuild.ExtensionPack.Tfs">
+      <HintPath>packages\MSBuild.Extension.Pack.1.2.0\lib\net40\MSBuild.ExtensionPack.Tfs.dll</HintPath>
+    </Reference>
+    <Reference Include="MSBuild.ExtensionPack.Tfs2010">
+      <HintPath>packages\MSBuild.Extension.Pack.1.2.0\lib\net40\MSBuild.ExtensionPack.Tfs2010.dll</HintPath>
+    </Reference>
+    <Reference Include="MSBuild.ExtensionPack.Tfs2012">
+      <HintPath>packages\MSBuild.Extension.Pack.1.2.0\lib\net40\MSBuild.ExtensionPack.Tfs2012.dll</HintPath>
+    </Reference>
+    <Reference Include="MSBuild.ExtensionPack.WindowsVirtualPC">
+      <HintPath>packages\MSBuild.Extension.Pack.1.2.0\lib\net40\MSBuild.ExtensionPack.WindowsVirtualPC.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
