@@ -1,0 +1,33 @@
+<Project ToolsVersion="4.0" DefaultTargets="Version" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <UsingTask AssemblyFile="..\packages\MSBuild.Extension.Pack.1.2.0\lib\net40\MSBuild.ExtensionPack.dll"
+             TaskName="MSBuild.ExtensionPack.Framework.AssemblyInfo"/>
+
+  <Target Name="Version" Condition="$(Version)=='True' And $(Targets)!='Clean'">
+    <ConvertToAbsolutePath Paths="$(SolutionPath)">
+      <Output TaskParameter="AbsolutePaths" PropertyName="SolutionPath" />
+    </ConvertToAbsolutePath >
+
+    <Message Text="Scanning ... $(SolutionPath)" Importance="high"/>
+    <PropertyGroup>
+      <IgnoreVersion Condition="$(IgnoreVersion)!=''">$(SolutionPath)\$(IgnoreVersion)\**\**\AssemblyInfo.cs</IgnoreVersion>
+    </PropertyGroup>
+
+    <Message Text="Skipping $(IgnoreVersion)" Condition="$(IgnoreVersion)!=''"/>
+
+    <ItemGroup>
+      <AssemblyInfoFiles Include="$(SolutionPath)\**\**\AssemblyInfo.cs"
+                         Exclude="$(buildrepo);$(IgnoreVersion)"/>
+    </ItemGroup>
+
+    <Error Condition="@(AssemblyInfoFiles)==''" Text="No AssemblyInfo.cs files"/>
+
+    <Message Text="Updating ... %(AssemblyInfoFiles.FullPath)" Importance="high"/>
+
+    <MSBuild.ExtensionPack.Framework.AssemblyInfo
+      AssemblyInfoFiles="@(AssemblyInfoFiles)"
+      AssemblyVersion="$(BUILD_NUMBER)"
+      AssemblyFileVersion="$(BUILD_NUMBER)"
+      UpdateAssemblyInformationalVersion="TRUE"/>
+  </Target>
+
+</Project>
