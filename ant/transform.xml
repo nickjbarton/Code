@@ -1,0 +1,159 @@
+<project name="transform" basedir="." default="...">
+
+  <target name="transform" depends="perl.parse,transform.file,transform.db,transform.xml">
+
+  </target>
+
+  <target name="actual.file.transform">
+      <echo message="Target location: ${deploy.location}"/>
+    <copy todir="${deploy.location}" verbose="true" overwrite="true">
+      <fileset dir="${deploy.location}"/>
+      <globmapper from="*.template" to="*"/>
+      <filterchain>
+        <expandproperties/>
+      </filterchain>
+    </copy>
+  </target>
+ 
+ <target name="multi.transform.file">
+	<property name="temp.deploy.location" value="deploy.location.${target.id}" />
+	<property name="deploy.location" value="${${temp.deploy.location}}" />
+    <echo message="deploy.location: ${deploy.location}" />
+	<antcall target="actual.file.transform"/>
+ </target>
+  
+  
+  <target name="transform.file" unless="${transform.parse}" >
+    <if>
+   	<isset property="deploy.target.list"/>
+		<then>
+			<foreach list="${deploy.target.list}" target="multi.transform.file" param="target.id" inheritall="true" /> 
+		</then>
+		<else>
+			<antcall target="actual.file.transform"/>
+		</else>
+	</if>
+  </target>
+
+  
+  
+  
+  <target name="transform.db" if="${transform.db}">
+    <echo message="Inside transform-db"/>
+    <exec executable="cscript.exe">
+      <arg value="..\vbs\config-db.vbs"/>
+      <arg value="${deploy.location}\${transform.db.dir}"/>
+    </exec>
+    <!--..\vbs\config-db.vbs"/>
+  -->
+  </target>
+
+  <target name="transform.xml" if="${transform.xml}">
+    <echo message="Inside transform-xml"/>
+
+
+    <foreach target="parse" param="xdtFile">
+      <path>
+        <fileset dir="${deploy.location}" id="xdt">
+          <include name="**\*.xdt"/>
+        </fileset>
+      </path>
+    </foreach>
+    <!--<exec executable="cscript.exe">
+      <arg value="..\vbs\config-db.vbs"/>
+      <arg value="${deploy.location}\${config.db.dir}"/>
+    </exec>-->
+
+  </target>
+
+  <target name="parse">
+    <dirname property="web.dirname" file="${xdtFile}"/>
+    <basename property="web.filename" file="${xdtFile}"
+           suffix=".xdt"/>
+    
+    <property name="web.config" value="${web.dirname}\${web.filename}"/>
+
+    <fail message="web.config: ${web.config} is missing">
+      <condition>
+        <not>
+          <available file="${web.config}" type="file" />
+        </not>
+      </condition>
+    </fail>
+
+    <fail message="xdtFile: ${xdtFile} is missing">
+      <condition>
+        <not>
+          <available file="${xdtFile}" type="file" />
+        </not>
+      </condition>
+    </fail>
+
+    <echo message="${xdtFile} applying to"/>
+    <echo message="${web.config}"/>
+    <exec executable="${basedir}\..\tools\ctt.exe">
+      <arg value="s:${web.config}"/>
+      <arg value="t:${xdtFile}"/>
+      <arg value="d:${web.config}"/>
+      <arg value="v:true"/>
+    </exec>
+
+    </target>
+
+	<!-- We have to do some very bespoke processing for some Adaptiv config files.
+		 The method we have adopted uses an ant file that is included within the application 
+		 source. On every run of the tranform "build" we import this file and then within the 
+		 perl.parse target, run the specific target from the ant file in the application source 
+		 if the correct application is adaptive-sungard. -->
+	
+  <import file="${source}\create_RiskQueueService.exe.extra.config.xml" optional="True" />
+
+  <target name="perl.parse" if="${transform.parse}" >
+ 
+  <if>
+    <equals arg1="${application}" arg2="adaptiv-sungard"/>
+	<then>
+	    <echo message="Running an adaptiv-sungard deployment. Calling create.riskqueue"/>
+	    <antcall target="create.riskqueue"/>
+	</then>
+  </if>
+  
+    <echo message="Processing ${deploy.target.list}"/>
+    <foreach list="${deploy.target.list}" target="multi.perl.parse" param="target.id" inheritall="true" /> 
+  </target>
+  
+    <target name="multi.perl.parse" >
+     <property name="temp.deploy.location" value="deploy.location.${target.id}" />
+	<property name="deploy.location" value="${${temp.deploy.location}}" />
+    <echo message="deploy.location: ${deploy.location}" />
+	<echo message="source: ${source}" />
+	 
+    <foreach  target="actual.perl.parse" param="srcFile" inheritall="true" >
+	    <path>
+	  <fileset dir="${source}">
+	    <include name="**\*.template"/>
+	</fileset>	
+	</path>
+	</foreach>
+  </target>
+  
+  <target name="actual.perl.parse">
+    <!--basename property="targetFile" file="${srcFile}"
+          suffix=".template"/-->
+	<path id="srcFile.path">
+	  <pathelement location="${srcFile}"/>
+	</path>
+    <pathconvert targetos="windows" property="targetFile" refid="srcFile.path">
+	    <map from="${source}" to="${deploy.location}"/>
+		<globmapper from="*.template" to="*"/>
+	</pathconvert>
+    <echo message="${srcFile} -> ${targetFile}" />
+	<exec executable="${basedir}\..\tools\perl\portableshell.bat">
+	  <arg value="${basedir}\..\tools\perl\parse.pl"/>
+	  <arg value="${user.dir}\deploy.kv"/>
+	  <arg value="${srcFile}"/>
+	  <arg value="${targetFile}"/>
+	</exec>
+  </target>
+	
+</project>
