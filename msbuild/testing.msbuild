@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Project DefaultTargets="Deploy" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Customers>Customer1;Customer2</Customers>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Customer Include="$(Customers)"/>
+  </ItemGroup>
+
+  <Target Name="Deploy" Inputs="@(Customer)" Outputs="%(Identity)">
+    <Message Text="Deployment to server done here.  Deploying to server: %(Customer.Identity)" />
+    <Message Text="Also called" />
+  </Target>
+
+  <Target Name="DeployNotBatching" >
+    <Message Text="Deployment to server done here.  Deploying to server: %(Customer.Identity)" />
+    <Message Text="Also called" />
+  </Target>
+
+</Project>
