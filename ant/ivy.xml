@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ivy-module version="1.4"> 
+   <info organisation="org" module="bt27"/>
+      <dependencies>    
+         <dependency org="org" name="bt35" rev="latest.lastSuccessful" >
+            <include name="*" type="*" ext="*"  matcher="exactOrRegexp"/> 
+         </dependency> 
+         <dependency org="org" name="bt32" rev="latest.lastSuccessful" >
+                  <include name="*" type="*" ext="*"  matcher="exactOrRegexp"/> 
+         </dependency> 
+   </dependencies> 
+</ivy-module> 
