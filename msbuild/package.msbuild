@@ -1,0 +1,37 @@
+<Project ToolsVersion="4.0" DefaultTargets="Package" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <UsingTask AssemblyFile="..\packages\MSBuild.Extension.Pack.1.2.0\lib\net40\MSBuild.ExtensionPack.dll"
+            TaskName="MSBuild.ExtensionPack.FileSystem.RoboCopy"/>
+
+  <Target Name="Package" >
+
+    <PropertyGroup>
+      <BUILD_NUMBER Condition="$(BUILD_NUMBER)==''">999.999.999</BUILD_NUMBER>
+      <Source Condition="$(Source)==''">..\..\Output\$(Application)</Source>
+      <Destination>\\fmd-a8-2886\Deployment\$(Application)</Destination>
+    </PropertyGroup>
+
+    <MSBuild.ExtensionPack.FileSystem.RoboCopy
+    Source="$(Source)"
+    Destination="$(Destination)\$(BUILD_NUMBER)"
+    Files="*.*"
+    Options="/MIR">
+      <Output TaskParameter="ExitCode" PropertyName="Exit" />
+      <Output TaskParameter="ReturnCode" PropertyName="Return" />
+    </MSBuild.ExtensionPack.FileSystem.RoboCopy>
+
+    <MSBuild.ExtensionPack.FileSystem.RoboCopy
+      Source="$(Source)"
+      Destination="$(Destination)\Latest"
+      Files="*.*"
+      Options="/MIR">
+      <Output TaskParameter="ExitCode" PropertyName="Exit" />
+      <Output TaskParameter="ReturnCode" PropertyName="Return" />
+    </MSBuild.ExtensionPack.FileSystem.RoboCopy>
+
+  </Target>
+
+
+
+
+</Project>
