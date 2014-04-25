@@ -1,0 +1,14 @@
+<Project DefaultTargets="Pack" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <NugetProject>C:\source\adaptiv\SourceCode\RiskPlatformLib\RiskPlatformLib.csproj</NugetProject>
+  </PropertyGroup>
+
+  <Target Name="Build">
+    <Msbuild Projects="$(NugetProject)"/>
+  </Target>
+
+  <Target Name="Pack" Condition="$(BUILD_IS_PERSONAL)!='True'">
+    <Message Text="Personal: $(BUILD_IS_PERSONAL)"/>
+    <Exec Command="$(NUGETPATH)\nuget pack $(NugetProject)"/>
+  </Target>
+</Project>
