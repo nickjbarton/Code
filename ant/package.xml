@@ -1,0 +1,51 @@
+<project name="package" basedir="." default="...">
+  <taskdef resource="net/sf/antcontrib/antcontrib.properties"/>
+  <property name="nuget.feed" value="http://fmd-a8-2887.markets.global.lloydstsb.com/guestAuth/app/nuget/v1/FeedService.svc/"/>
+  <target name="package" depends="get.packages,package.store,package.zip">
+  </target>
+
+  <target name="get.packages">
+    <if>
+      <isset property="nuget.packages"/>
+      <then>
+        <foreach list="${nuget.packages}" target="get.nupackage" param="package"/>
+      </then>
+    </if>
+  </target>
+
+  <target name="get.nupackage">
+    <property name="nuget"
+                location="..\packages\NuGet.CommandLine.2.7.1\tools\NuGet.exe"/>
+    <echo message="Contacting ${nuget.feed}..."/>
+    <exec executable="${nuget}">
+      <arg line="install ${package} -OutputDirectory ..\..\${repopath}\Packages -ExcludeVersion -Source ${nuget.feed}"/>
+    </exec>
+
+  </target>
+  
+  <target name="package.store">
+    <property name="source" value="..\..\${repopath}"/>
+    <property name="latest.destination" value="${buildshare}${application}\latest"/>
+    <property name="destination" value="${buildshare}${application}\${build.number}"/>
+    <property name="robocopy"
+              location="..\tools\robocopy.exe"/>
+
+    <exec executable="${robocopy}" osfamily="windows">
+      <arg value="${source}"/>
+      <arg value="${destination}"/>
+      <arg value="/MIR"/>
+    </exec>
+
+    <exec executable="${robocopy}" osfamily="windows">
+      <arg value="${source}"/>
+      <arg value="${latest.destination}"/>
+      <arg value="/MIR"/>
+    </exec>
+  </target>
+  
+  
+  <target name="package.zip">
+    <zip destfile="..\..\zip\${application}.zip"
+       basedir="..\..\${repopath}" />
+  </target>
+</project>
