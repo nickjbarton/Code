@@ -1,0 +1,16 @@
+<project name="MyProject" default="build" basedir=".">
+  <target name="build">
+    <echo message="${repopath}" />
+
+    <fileset id="sln" dir="..\..\${repopath}" >
+      <include name="**\*.sln"/>
+    </fileset>
+    <pathconvert pathsep="${line.separator}" 
+                 property="projects" 
+                 refid="sln"/>
+
+    <echo message="Files ${projects}" />
+    
+  </target>
+
+</project>
