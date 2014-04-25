@@ -1,0 +1,87 @@
+<Project ToolsVersion="4.0" DefaultTargets="build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003"
+     InitialTargets="CheckProperties">
+
+  <PropertyGroup>
+    <ApplicationPath Condition="$(ApplicationPath)==''">mlc_stability\trunk</ApplicationPath>
+    <SolutionPath Condition="$(SolutionPath)==''">..\..\$(ApplicationPath)</SolutionPath>
+    <buildrepo>..\..\build\</buildrepo>
+  </PropertyGroup>
+
+  <Import Project=".\version.msbuild"/>
+
+  <Target Name="CheckProperties">
+    <Message Text="IgnoreVersion:$(IgnoreVersion)"/>
+    <Message Text="SolutionPath:$(SolutionPath)"/>
+    <Message Text="Platform:$(PLATFORM)"/>
+    <Message Text="Configuration:$(CONFIGURATION)"/>
+    <Message Text="Build Number:$(BUILD_NUMBER)" Condition="$(BUILD_NUMBER)!=''"/>
+    <Message Text="TARGETS:$(TARGETS)" />
+    <Message Text="Ignore:$(Ignore)" />
+    <Message Text="Version: $(Version)"/>
+    <Message Text="Legacy: $(Legacy)"/>
+    <Message Text="Installers: $(Installers)"/>
+  </Target>
+
+  <Target Name="FindSolutions">
+
+    <ItemGroup>
+      <DontBuild Include="$(Ignore)"/>
+      <Solutions Include="$(SolutionPath)\**\*.sln"
+                 Exclude="$(buildrepo);"/>
+      <Solutions Remove="$(SolutionPath)\%(DontBuild.Identity)"/>
+    </ItemGroup>
+
+    <Message Text="DontBuild: $(SolutionPath)\%(DontBuild.Identity)" Importance="high" Condition="@(DontBuild)!=''"/>
+    <Error Text="None found $(SolutionPath)" Condition="@(Solutions)==''"/>
+
+    <Message   Text="Solutions: %(Solutions.FullPath)"/>
+  </Target>
+
+  <Target Name="build" DependsOnTargets="Version;BuildWithoutInstallers;BuildWithInstallers">
+  </Target>
+
+  <Target Name="BuildWithoutInstallers" DependsOnTargets="FindSolutions" Condition="$(Legacy)!='True'">
+    <PropertyGroup>
+      <ParentDir>$([System.IO.Directory]::GetParent($(SolutionPath)))</ParentDir>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <OutputDirs Include="$(ParentDir)\Output\;$(SolutionPath)\Output"/>
+    </ItemGroup>
+
+    <Message Text="ParentDir: $(ParentDir)"/>
+    <Message Text="MSBuildThisFileDirectory : $(MSBuildThisFileDirectory)"/>
+
+    <MSBuild Projects="@(Solutions)" ContinueOnError="False"
+             Properties="OutputPath=$(ParentDir)\Output\%(Solutions.Filename)" Targets="$(Targets)"/>
+
+    <RemoveDir  Directories="@(OutputDirs)" Condition="$(Targets)=='Clean'"/>
+    <Message Text="Removed %(OutputDirs.Identity)" Condition="$(Targets)=='Clean'" Importance="high"/>
+  </Target>
+
+  <Target Name="BuildWithInstallers" Condition="$(Installers)=='True'" DependsOnTargets="FindSolutions">
+
+    <Error Condition="$(VS100COMNTOOLS)=='' And $(Legacy)!='True'" Text="Can't build installers as Visual studio 2010 is missing"/>
+
+    <PropertyGroup>
+      <DevenvPath Condition="$(Legacy)=='True'">$(VS90COMNTOOLS)..\IDE\devenv.com</DevenvPath>
+      <DevenvPath Condition="$(Legacy)!='True'">$(VS100COMNTOOLS)..\IDE\devenv.com</DevenvPath>
+    </PropertyGroup>
+
+    <Exec Command="&quot;$(DevenvPath)&quot; %(Solutions.FullPath) /Build" />
+
+    <PropertyGroup>
+      <ParentDir>$([System.IO.Directory]::GetParent($(SolutionPath)))</ParentDir>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <BuiltInstallers Include="$(SolutionPath)\**\*.msi"
+                       Exclude="$(SolutionPath)\Output"/>
+    </ItemGroup>
+
+    <Message Text="Found: @(BuiltInstallers)"/>
+    <Copy SourceFiles="@(BuiltInstallers)" DestinationFolder="$(ParentDir)\Output\%(BuiltInstallers.Filename)\"/>
+
+  </Target>
+
+</Project>
