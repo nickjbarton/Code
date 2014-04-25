@@ -1,0 +1,98 @@
+<Project ToolsVersion="4.0" DefaultTargets="InstallService" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <UsingTask AssemblyFile="..\packages\MSBuild.Extension.Pack.1.2.0\lib\net40\MSBuild.ExtensionPack.dll"
+            TaskName="MSBuild.ExtensionPack.Computer.WindowsService"/>
+
+  <PropertyGroup>
+    <MachineName Condition="$(MachineName)==''">localhost</MachineName>
+    <ServiceName Condition="$(ServiceName)==''">InputFileValidation</ServiceName>
+    <ServicePath Condition="$(ServicePath)==''">C:\InputFileValidation\InputFileValidation.exe</ServicePath>
+    <User Condition="$(User)==''"></User>
+    <Password Condition="$(Password)==''"></Password>
+    <SuppressStart Condition="$(SuppressStart)==''">False</SuppressStart>
+  </PropertyGroup>
+
+
+  <Target Name="CheckProperties" BeforeTargets="StopService">
+    <Message Text="MachineName: $(MachineName)"/>
+    <Message Text="ServiceName: $(ServiceName)"/>
+    <Message Text="ServicePath: $(ServicePath)"/>
+    <Message Text="User       : $(User)"/>
+    <Message Text="SuppressStart   : $(SuppressStart)"/>
+  </Target>
+
+  <Target Name="StopService" BeforeTargets="InstallService">
+
+    <MSBuild.ExtensionPack.Computer.WindowsService
+      TaskAction="CheckExists"
+      ServiceName="$(ServiceName)"
+      MachineName="$(MachineName)">
+      <Output TaskParameter="Exists" PropertyName="DoesExist"/>
+    </MSBuild.ExtensionPack.Computer.WindowsService>
+
+    <MSBuild.ExtensionPack.Computer.WindowsService
+      TaskAction="Stop"
+      ServiceName="$(ServiceName)"
+      MachineName="$(MachineName)"
+      Condition="$(DoesExist)=='True'">
+    </MSBuild.ExtensionPack.Computer.WindowsService>
+
+  </Target>
+
+  <Target Name="StartService" AfterTargets="InstallService">
+
+    <MSBuild.ExtensionPack.Computer.WindowsService
+      TaskAction="CheckExists"
+      ServiceName="$(ServiceName)"
+      MachineName="$(MachineName)">
+      <Output TaskParameter="Exists" PropertyName="DoesExist"/>
+    </MSBuild.ExtensionPack.Computer.WindowsService>
+
+    <MSBuild.ExtensionPack.Computer.WindowsService
+      TaskAction="Start"
+      ServiceName="$(ServiceName)"
+      MachineName="$(MachineName)"
+      Condition="$(DoesExist)=='True' And $(SuppressStart)=='False'"
+      RetryAttempts="20">
+    </MSBuild.ExtensionPack.Computer.WindowsService>
+    <Message Text="Service $(ServiceName) set not to start" Condition="$(SuppressStart)=='True'" Importance="High" />
+  </Target>
+
+  <Target Name="InstallService">
+
+    <PropertyGroup>
+      <ServiceExeExists Condition="Exists('$(ServicePath)')">True</ServiceExeExists>
+    </PropertyGroup>
+
+    <!-- 
+    <Error   Text="Service not found at $(ServicePath)" Condition="$(ServiceExeExists)!='True'"/>
+    -->
+    <Message Text="Installing  $(ServicePath) %(ServiceName.Identity)" Importance="high"/>
+    <MSBuild.ExtensionPack.Computer.WindowsService
+      TaskAction="CheckExists"
+      ServiceName="$(ServiceName)"
+      MachineName="$(MachineName)">
+      <Output TaskParameter="Exists" PropertyName="DoesExist"/>
+    </MSBuild.ExtensionPack.Computer.WindowsService>
+
+    <Message Text="Installed $(ServiceName) $(ServicePath) for $(User)" Importance="high"/>
+    <MSBuild.ExtensionPack.Computer.WindowsService
+      TaskAction="Install"
+      ServiceName="$(ServiceName)"
+      User="$(User)"
+      Password="$(Password)"
+      ServicePath="$(ServicePath)"
+      MachineName="$(MachineName)"
+      Condition="!$(DoesExist)"/>
+
+
+    <MSBuild.ExtensionPack.Computer.WindowsService
+      TaskAction="SetAutomatic"
+      ServiceName="$(ServiceName)"
+      MachineName="$(MachineName)"
+      Condition="!$(DoesExist)"/>
+
+    <Warning Text="%(ServiceName.Identity) service already exists" Condition="$(DoesExist)"/>
+  </Target>
+
+</Project>
