@@ -1,0 +1,21 @@
+<Project ToolsVersion="4.0"
+         DefaultTargets="prop"
+		 InitialTargets="CheckProperties"
+		 xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup Label="testPropertyGroup">
+    <Property1>Value1</Property1>
+    <Property2>Value2</Property2>
+  </PropertyGroup>
+
+  <Target Name="CheckProperties">
+    <Message Text="Property1: $(Property1)"/>
+    <Message Text="Property2: $(Property2)"/>
+  </Target>
+
+  <Target Name="prop">
+    <Message Text="Name=%(Names.Identity)"/>
+    <!--<Message Text="Value=%(testPropertyGroup.Value)"/>-->
+  </Target>
+
+</Project>
