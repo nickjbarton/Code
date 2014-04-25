@@ -1,0 +1,17 @@
+<project name="core" default="defaultmessage" basedir=".">
+
+  <property environment="env"/>
+  <property name="build.number" value="999.999.999"/>
+  <property name="application" value="oar"/>
+
+  <loadproperties srcFile=".\environments\common.properties"/>
+  <loadproperties srcFile=".\application\${application}.properties"/>
+
+  <import file=".\package.xml"/>
+
+  <target name="defaultmessage">
+    <echo message="Please specify a target e.g. package, build or transform"/>
+  </target>
+
+  
+</project>
