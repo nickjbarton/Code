@@ -1,0 +1,30 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" >
+  <ItemDefinitionGroup>
+    <WithContent>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </WithContent>
+  </ItemDefinitionGroup>
+
+  <Target Name="Definition">
+    <ItemGroup>
+      <NotContent Include="Content\**\not*"/>
+    </ItemGroup>
+    <ItemGroup>
+      <WithContent Include="Content\**\with*"/>
+    </ItemGroup>
+
+    <!--<Message Text="%(WithContent.CopyToOutputDirectory)"/>-->
+    <Message Text="Not Content %(NotContent.Identity)"/>
+
+    <ItemGroup>
+      <Content Include="@(NotContent)"/>
+      <Content  Include="@(WithContent)"/>
+    </ItemGroup>
+
+    <Message Text="Added together: %(Content.CopyToOutputDirectory)"/>
+    <Message Text="Added together: %(Content.Identity)"/>
+
+  </Target>
+
+
+</Project>
