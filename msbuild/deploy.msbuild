@@ -1,0 +1,43 @@
+<Project ToolsVersion="4.0" DefaultTargets="Deploy" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <UsingTask AssemblyFile="$(MSBuildThisFileDirectory)..\packages\MSBuild.Extension.Pack.1.2.0\lib\net40\MSBuild.ExtensionPack.dll"
+            TaskName="MSBuild.ExtensionPack.FileSystem.RoboCopy"/>
+  <UsingTask AssemblyFile="$(MSBuildThisFileDirectory)..\packages\MSBuild.Extension.Pack.1.2.0\lib\net40\MSBuild.ExtensionPack.dll"
+             TaskName="MSBuild.ExtensionPack.Computer.WindowsService"/>
+  <UsingTask AssemblyFile="$(MSBuildThisFileDirectory)..\packages\MSBuildTasks.1.4.0.56\tools\MSBuild.Community.Tasks.dll"
+             TaskName="MSBuild.Community.Tasks.Sleep"/>
+
+  <PropertyGroup>
+    <Version Condition="$(Version)==''">Latest</Version>
+    <Environment Condition="$(Environment)==''">Monitor.local</Environment>
+    <Application Condition="$(Application)==''">Monitor</Application>
+  </PropertyGroup>
+
+  <Import Project="$(MSBuildThisFileDirectory)\Environments\$(Environment).msbuild"/>
+  <Import Project="$(MSBuildThisFileDirectory)\Applications\$(Application).msbuild"/>
+
+  <Target Name="Deploy">
+
+    <MSBuild.ExtensionPack.FileSystem.RoboCopy
+      Source="$(Source)"
+      Destination="$(Destination)"
+      Files="*.*"
+      Options="/MIR /XF *.config">
+      <Output TaskParameter="ExitCode" PropertyName="Exit" />
+      <Output TaskParameter="ReturnCode" PropertyName="Return" />
+    </MSBuild.ExtensionPack.FileSystem.RoboCopy>
+
+  </Target>
+
+  <Target Name="Deploy-Monitor">
+    <MSBuild.ExtensionPack.Computer.WindowsService  MachineName="$(ServiceHost)"
+                                                    ServiceName="$(ServiceName)"
+                                                    TaskAction="Stop" />
+    <!--<MSBuild.Community.Tasks.Sleep Seconds="5"/>-->
+    <CallTarget Targets="Deploy"/>
+    <MSBuild.ExtensionPack.Computer.WindowsService  MachineName="$(ServiceHost)"
+                                                    ServiceName="$(ServiceName)"
+                                                    TaskAction="Start"   />
+  </Target>
+
+</Project>
