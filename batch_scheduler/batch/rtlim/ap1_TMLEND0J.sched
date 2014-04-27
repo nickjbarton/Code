@@ -1,0 +1,5 @@
+-,${mlc.mlctask.unix.user},${mlc.app.server.1},${mlc.mlctask.home.directory.1}/live/etc/initialPostBatchProcessing.ksh
+-,${mlc.mlctask.unix.user},${mlc.app.server.1},${mlc.mlctask.home.directory.1}/live/etc/archiveFiles.ksh
+-,${mlc.mlctask.unix.user},${mlc.app.server.1},${mlc.mlctask.home.directory.1}/live/etc/archiveLogs.ksh
+-,${mlc.mlctask.unix.user},${mlc.app.server.1},${mlc.mlctask.home.directory.1}/live/etc/fx_rate_append_copy.ksh
+-,${mlc.mlctask.unix.user},${mlc.app.server.1},${mlc.mlctask.home.directory.1}/live/etc/closingEOBProcessing.ksh

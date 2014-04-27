@@ -1,0 +1,3 @@
+-,${mlc.mlctask.unix.user},${mlc.app.server.2},${mlc.mlctask.home.directory.2}/live/etc/initialLTSBAResetProcessing.ksh
+-,${mlc.mlctask.unix.user},${mlc.app.server.2},${mlc.mlctask.home.directory.2}/live/etc/partialReset.ksh cob ltsba
+-,${mlc.mlctask.unix.user},${mlc.app.server.2},${mlc.mlctask.home.directory.2}/live/etc/closingLTSBAResetProcessing.ksh

@@ -1,0 +1,1 @@
+-,${mlc.mlctask.unix.user},${mlc.app.server.1},scripts/prep_shared.ksh.template ${cob.date} ${mlcfile.source}

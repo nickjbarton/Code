@@ -1,0 +1,9 @@
+03:00,${mlc.mlctask.unix.user},${mlc.app.server.2},${mlc.mlctask.home.directory.2}/live/etc/runMlcReport.ksh CreditExposure2
+-,${mlc.mlctask.unix.user},${mlc.app.server.2},${mlc.mlctask.home.directory.2}/live/etc/runMlcReport.ksh CreditExposure7
+-,${mlc.mlctask.unix.user},${mlc.app.server.2},${mlc.mlctask.home.directory.2}/live/etc/runMlcReport.ksh CreditExposure8
+-,${mlc.mlctask.unix.user},${mlc.app.server.2},${mlc.mlctask.home.directory.2}/live/etc/runMlcReport.ksh CreditExposure9
+-,${mlc.mlctask.unix.user},${mlc.app.server.2},${mlc.mlctask.home.directory.2}/live/etc/runMlcReport.ksh CreditExposure4
+-,${mlc.mlctask.unix.user},${mlc.app.server.2},${mlc.mlctask.home.directory.2}/live/etc/runMlcReport.ksh CreditExposure6
+-,${mlc.mlctask.unix.user},${mlc.app.server.2},${mlc.mlctask.home.directory.2}/live/etc/runMlcReport.ksh CreditExposure3
+-,${mlc.mlctask.unix.user},${mlc.app.server.2},${mlc.mlctask.home.directory.2}/live/etc/runMlcReport.ksh CreditExposure1
+#-,${mlc.mlctask.unix.user},${mlc.app.server.2},${mlc.mlctask.home.directory.2}/live/etc/runMlcReport.ksh CreditExposure5

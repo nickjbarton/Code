@@ -1,0 +1,6 @@
+-,${mlc.mlctask.unix.user},${mlc.app.server.1},${mlc.mlctask.home.directory.1}/live/etc/purgeEngines.ksh
+-,${mlc.mlctask.unix.user},${mlc.app.server.1},${mlc.mlctask.home.directory.1}/live/etc/InitialCOBProcessing.ksh
+-,${mlc.mlctask.unix.user},${mlc.app.server.1},${mlc.mlctask.home.directory.1}/live/etc/downloadFiles.ksh summit_fx
+-,${mlc.mlctask.unix.user},${mlc.app.server.1},${mlc.mlctask.home.directory.1}/live/etc/transformFx.ksh summit_fx
+-,${mlc.mlctask.unix.user},${mlc.app.server.1},${mlc.mlctask.home.directory.1}/live/etc/FXrates_load.ksh
+-,${mlc.mlctask.unix.user},${mlc.app.server.1},${mlc.mlctask.home.directory.1}/live/etc/closingCOBProcessing.ksh

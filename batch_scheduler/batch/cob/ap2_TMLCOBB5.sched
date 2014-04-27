@@ -1,0 +1,5 @@
+-,${mlc.mlctask.unix.user},${mlc.app.server.2},${mlc.mlctask.home.directory.2}/live/etc/runMlcReport.ksh Counterparty
+-,${mlc.mlctask.unix.user},${mlc.app.server.2},${mlc.mlctask.home.directory.2}/live/etc/SendSentryExtract.ksh
+-,${mlc.mlctask.unix.user},${mlc.app.server.2},${mlc.mlctask.home.directory.2}/live/etc/SendCpartyExtractForRatingMapper.ksh
+-,${mlc.mlctask.unix.user},${mlc.app.server.2},${mlc.mlctask.home.directory.2}/live/etc/runMlcReport.ksh Counterparty
+-,${mlc.mlctask.unix.user},${mlc.app.server.2},${mlc.mlctask.home.directory.2}/live/etc/closingCOBProcessing.ksh

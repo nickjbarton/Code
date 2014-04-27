@@ -1,0 +1,3 @@
+-,${mlc.mlctask.unix.user},${mlc.app.server.2},${mlc.mlctask.home.directory.2}/live/etc/initialBeginningProcessing.ksh
+-,${mlc.mlctask.unix.user},${mlc.app.server.2},${mlc.mlctask.home.directory.2}/live/etc/createLogDir.ksh
+-,${mlc.mlctask.unix.user},${mlc.app.server.2},${mlc.mlctask.home.directory.2}/live/etc/closingBeginningProcessing.ksh

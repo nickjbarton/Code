@@ -1,0 +1,4 @@
+-,${mlc.mlctask.unix.user},${mlc.app.server.2},${mlc.mlctask.home.directory.2}/live/etc/initialPostBatchProcessing.ksh
+-,${mlc.mlctask.unix.user},${mlc.app.server.2},${mlc.mlctask.home.directory.2}/live/etc/archiveFiles.ksh
+-,${mlc.mlctask.unix.user},${mlc.app.server.2},${mlc.mlctask.home.directory.2}/live/etc/writeEOBFlagFiles.ksh
+-,${mlc.mlctask.unix.user},${mlc.app.server.2},${mlc.mlctask.home.directory.2}/live/etc/closingPostBatchProcessing.ksh

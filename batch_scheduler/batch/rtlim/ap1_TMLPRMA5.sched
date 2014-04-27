@@ -1,0 +1,3 @@
+-,${mlc.mlctask.unix.user},${mlc.app.server.1},${mlc.mlctask.home.directory.1}/live/etc/initialMX3ResetProcessing.ksh
+-,${mlc.mlctask.unix.user},${mlc.app.server.1},${mlc.mlctask.home.directory.1}/live/etc/partialReset.ksh rtlim mx3
+-,${mlc.mlctask.unix.user},${mlc.app.server.1},${mlc.mlctask.home.directory.1}/live/etc/closingMX3ResetProcessing.ksh

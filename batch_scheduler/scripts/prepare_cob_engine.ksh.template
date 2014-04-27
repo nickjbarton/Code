@@ -1,0 +1,20 @@
+#!/usr/bin/ksh
+dir=$(cd $(dirname $0);pwd)
+. ${mlc.mlctask.home.directory.1}/live/etc/setENV.ksh
+# This script assumes that the COB date - 1 is set in the idf database
+date=$( echo "select convert(varchar,CalendarDate,103) from dbo.Calendar where CalendarID=1
+go " | isql -S$SYB_SERVER -U$SYB_USER -P$SYB_PWD -D$SYB_DB  | egrep " [0-9].*" | sed 's/^ //g')
+echo $date 
+
+echo "Creating Engine for $date" 
+cd $dir
+sed "s#@DATE@#$date#g;s#@HOME@#${mlc.mlctask.home.directory.1}#g" lts_create_cob_engine.xml.template > lts_create_cob_engine.xml
+if [[ $? -ne 0 ]]
+then
+  echo "Failed to parse file"
+  exit 1
+fi
+cd $MLC_LTS_LAUNCH_PATH
+./launchmlc.sh -lts $dir/lts_create_cob_engine.xml
+echo "Engine prepared, sleeping for 30 seconds"
+sleep 30

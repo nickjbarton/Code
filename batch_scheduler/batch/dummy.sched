@@ -1,0 +1,4 @@
+1,-,-,dummy/test1.sched
+2,-,-,dummy/test2.sched  
+3,1|2,-,dummy/test3.sched
+4,1|2|3,-,dummy/test2.sched

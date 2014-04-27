@@ -1,0 +1,17 @@
+#5,-,-,cob_noreset/ap1_envprep.sched
+#10,3,-,cob_noreset/ap1_TMLBGN00.sched
+#15,10,-,cob_noreset/ap2_TMLBGN00.sched
+#20,15,-,cob_noreset/prep_cob.sched
+27,20,19:05,cob_noreset/ap2_TMLCOBB5.sched
+28,27,-,cob_noreset/ap2_TMLREP04.sched
+29,28,19:10,cob_noreset/ap2_TMLREP06.sched
+30,29,21:00,cob_noreset/ap2_TMLREP0A.sched
+55,30,02:00,cob_noreset/ap2_TMLAUD0A.sched
+60,55,02:00,cob_noreset/ap2_TMLREP0E.sched
+70,55,02:00,cob_noreset/ap2_TMLREP0R.sched
+80,55|70,01:25,cob_noreset/ap2_TMLREP1R.sched
+90,60|80,02:30,cob_noreset/ap2_TMLREP0E_TMLRCPE9.sched
+130,90,03:15,cob_noreset/ap2_TMLREP0X.sched
+140,130,-,cob_noreset/ap2_TMLACLS01.sched
+150,140,04:41,cob_noreset/ap2_TMLEOM01.sched
+160,150,04:45,cob_noreset/ap2_TMLENDBJ.sched

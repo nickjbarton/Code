@@ -1,0 +1,2 @@
+12:50,${mlc.mlctask.unix.user},${mlc.app.server.1},echo test2_job1 ${this.is.null}
+14:45,${mlc.mlctask.unix.user},${mlc.app.server.1},/home/svcmlctaskd/mlc_dev_46/batchdev/test.sh test2_job2

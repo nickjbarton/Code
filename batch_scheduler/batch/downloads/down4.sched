@@ -1,0 +1,10 @@
+-,${mlc.mlctask.unix.user},${mlc.app.server.1},${mlc.mlctask.home.directory.1}/live/etc/downloadFiles.ksh summit_cash
+-,${mlc.mlctask.unix.user},${mlc.app.server.1},${mlc.mlctask.home.directory.1}/live/etc/downloadFiles.ksh tds_cash
+-,${mlc.mlctask.unix.user},${mlc.app.server.1},${mlc.mlctask.home.directory.1}/live/etc/downloadFiles.ksh tds_trades
+-,${mlc.mlctask.unix.user},${mlc.app.server.1},${mlc.mlctask.home.directory.1}/live/etc/downloadFiles.ksh lbond_pos
+-,${mlc.mlctask.unix.user},${mlc.app.server.1},${mlc.mlctask.home.directory.1}/live/etc/downloadFiles.ksh mx3_cash
+-,${mlc.mlctask.unix.user},${mlc.app.server.1},${mlc.mlctask.home.directory.1}/live/etc/downloadFiles.ksh mx3_trades
+-,${mlc.mlctask.unix.user},${mlc.app.server.1},${mlc.mlctask.home.directory.1}/live/etc/downloadFiles.ksh index_decomposition
+-,${mlc.mlctask.unix.user},${mlc.app.server.1},${mlc.mlctask.home.directory.1}/live/etc/downloadFiles.ksh atlas
+-,${mlc.mlctask.unix.user},${mlc.app.server.1},${mlc.mlctask.home.directory.1}/live/etc/downloadFiles.ksh raptor_ratings
+-,${mlc.mlctask.unix.user},${mlc.app.server.1},${mlc.mlctask.home.directory.1}/live/etc/downloadFiles.ksh summit_trades

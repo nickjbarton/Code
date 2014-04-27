@@ -1,0 +1,111 @@
+#!/usr/bin/ksh
+COB=$1
+if [[ -z $1 ]] || [[ $(echo $1 | /usr/xpg4/bin/egrep -c '^[0-9]{1,2}/[0-9]{1,2}/20[0-9]{2}') -lt 1 ]]
+then
+  echo "Specify date : dd/mm/yyyy"
+  exit 1
+fi
+dir=$(cd $(dirname $0);pwd)
+pid=$$
+. ${mlc.mlctask.home.directory.1}/live/etc/setENV.ksh
+dates=$(echo "
+BEGIN
+DECLARE @SWAPDATE DATETIME 
+DECLARE @FROMDATE DATETIME
+DECLARE @offset int
+
+SELECT @offset=1
+SELECT @FROMDATE=convert(datetime, '$COB',103) 
+while datepart(dw,dateadd(dd,-@offset,@FROMDATE)) in (1,7)
+          or exists (select * from Calendar
+                     where CalendarLabel like 'HOLIDAY%'
+                     and CalendarDate = dateadd(dd,-@offset,@FROMDATE))
+    begin
+        select @offset = @offset + 1
+    end
+select @SWAPDATE=DATEADD(day,-@offset,@FROMDATE)
+
+update dbo.Calendar set CalendarDate=@SWAPDATE where CalendarID=1
+select convert(varchar,@SWAPDATE,112),  convert(varchar,@FROMDATE,112)
+end
+
+go " | isql -S$SYB_SERVER -U$SYB_USER -P$SYB_PWD -D$SYB_DB  | egrep " [0-9].*" | sed 's/^ //g')
+
+prevdate=$(echo $dates |nawk '{ print $1 }')
+cobdate=$(echo $dates |nawk '{ print $2 }')
+
+server1=${mlc.app.server.1}
+server2=${mlc.app.server.2}
+
+echo "  
+for sharedir in mlcfiles batch_reports logs input 
+  do
+    if [[ ! -d ${mlc.mlctask.home.directory.1}/shared/\$sharedir/$prevdate ]]
+    then
+      mkdir -p ${mlc.mlctask.home.directory.1}/shared/\$sharedir/$prevdate
+    fi
+    if [[ -L ${mlc.mlctask.home.directory.1}/shared/\$sharedir/latest ]]
+    then
+      rm ${mlc.mlctask.home.directory.1}/shared/\$sharedir/latest
+    elif [[ -d ${mlc.mlctask.home.directory.1}/shared/\$sharedir/latest ]]
+    then
+      mv ${mlc.mlctask.home.directory.1}/shared/\$sharedir/latest ${mlc.mlctask.home.directory.1}/shared/\$sharedir/save_latest_${prevdate}.${pid}
+    fi
+    ln -s ${mlc.mlctask.home.directory.1}/shared/\$sharedir/$prevdate ${mlc.mlctask.home.directory.1}/shared/\$sharedir/latest
+    if [[ -d ${mlc.mlctask.home.directory.1}/shared/\$sharedir/$cobdate ]]
+    then
+      mv ${mlc.mlctask.home.directory.1}/shared/\$sharedir/$cobdate ${mlc.mlctask.home.directory.1}/shared/\$sharedir/save_${cobdate}.$pid
+    fi
+  done 
+  if [[ -f ${mlc.mlctask.home.directory.1}/shared/Batch_Finished_mlcap1.txt ]]
+  then
+    rm ${mlc.mlctask.home.directory.1}/shared/Batch_Finished_mlcap1.txt
+  fi
+
+" > /tmp/server1_shared.ksh
+
+  echo "
+  for sharedir in mlcfiles batch_reports logs input 
+  do
+    if [[ ! -d ${mlc.mlctask.home.directory.2}/shared/\$sharedir/$prevdate ]]
+    then
+      mkdir -p ${mlc.mlctask.home.directory.2}/shared/\$sharedir/$prevdate
+    fi
+    if [[ -L ${mlc.mlctask.home.directory.2}/shared/\$sharedir/latest ]]
+    then
+      rm ${mlc.mlctask.home.directory.2}/shared/\$sharedir/latest
+    elif [[ -d ${mlc.mlctask.home.directory.2}/shared/\$sharedir/latest ]]
+    then
+      mv ${mlc.mlctask.home.directory.2}/shared/\$sharedir/latest ${mlc.mlctask.home.directory.2}/shared/\$sharedir/save_latest_${prevdate}.${pid}
+    fi
+    ln -s ${mlc.mlctask.home.directory.2}/shared/\$sharedir/$prevdate ${mlc.mlctask.home.directory.2}/shared/\$sharedir/latest
+    if [[ -d ${mlc.mlctask.home.directory.2}/shared/\$sharedir/$cobdate ]]
+    then
+      mv ${mlc.mlctask.home.directory.2}/shared/\$sharedir/$cobdate ${mlc.mlctask.home.directory.2}/shared/\$sharedir/save_${cobdate}.$pid
+    fi
+  done
+" > /tmp/server2_shared.ksh
+
+if [[ $server1 = $(hostname) ]]
+then
+  ksh /tmp/server1_shared.ksh
+else
+  scp /tmp/server1_shared.ksh ${mlc.mlctask.unix.user}@${mlc.app.server.1}:/tmp/
+  ssh ${mlc.mlctask.unix.user}@${mlc.app.server.1} "ksh /tmp/server1_shared.ksh"
+fi
+
+if [[ $server2 = $(hostname) ]]
+then
+  ksh /tmp/server2_shared.ksh
+else
+  scp /tmp/server2_shared.ksh ${mlc.mlctask.unix.user}@${mlc.app.server.2}:/tmp/
+  ssh ${mlc.mlctask.unix.user}@${mlc.app.server.2} "ksh /tmp/server2_shared.ksh"
+fi
+
+if [[ -n $2 ]]
+then
+  cp $2/* ${mlc.mlctask.home.directory.1}/shared/mlcfiles/latest 
+fi
+cp $dir/FXrates.csv ${mlc.mlctask.home.directory.1}/shared/input/$prevdate/
+
+

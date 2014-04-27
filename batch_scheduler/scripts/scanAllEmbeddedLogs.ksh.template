@@ -1,0 +1,32 @@
+#!/usr/bin/ksh
+dir=$(cd $(dirname $0);pwd)
+. ${mlc.mlctask.home.directory.2}/live/etc/setENV.ksh
+
+cd $MLC_ETC
+
+export LIST=`cat $MLC_ETC/embeddedLogList`
+errot_flag=false
+for eachEmbeddedLog in $LIST
+do
+    ./scanEmbeddedLog.ksh $eachEmbeddedLog
+    if [[ $? -ne 0 ]]
+    then
+      if [ -f logFileScanning/unmatched.txt ]
+      then
+         mv logFileScanning/unmatched.txt logFileScanning/unmatched.txt.$eachEmbeddedLog
+      fi
+
+      if [ -f unmatched_lts.txt ]
+      then
+          mv logFileScanning/unmatched_lts.txt .unmatched_lts.txt.$eachEmbeddedLog
+      fi
+    error_flag=true
+    fi
+done
+
+if [[ $error_flag = 'true' ]]
+then
+  echo "FATAL: New errors found in log files"
+  exit 1
+fi
+

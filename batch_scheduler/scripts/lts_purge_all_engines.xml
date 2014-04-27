@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE mlc_lts SYSTEM "mlc_lts.dtd">
+
+<mlc_lts test_mode="No">
+
+	<connection_param><mlc_props_file><file_full_path>../fs/public/mxres/mxmlc/mlc_properties.mxres</file_full_path></mlc_props_file></connection_param>
+	<log><file_full_path>/tmp/lts_purge_all_engines.log</file_full_path></log>
+	<log><stdout></stdout></log>
+
+
+ <task stop_on_error="no">
+        <lts_task>
+           <engine_purge nb_days_shifter="0od" engine_selection="all" pattern="RTLIM"></engine_purge> -->
+        </lts_task>
+ </task>
+</mlc_lts>

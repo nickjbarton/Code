@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE mlc_lts SYSTEM "mlc_lts.dtd">
+
+<mlc_lts test_mode="No">
+	<connection_param><mlc_props_file><file_full_path>../fs/public/mxres/mxmlc/mlc_properties.mxres</file_full_path></mlc_props_file></connection_param>
+	<log><file_full_path>/tmp/lts_create_rtlim_engine.log</file_full_path></log>
+	<log><stdout></stdout></log>
+
+    <!-- Engine Prepare Reset   -->
+
+    <task stop_on_error="yes">
+	<jls_task>
+	<engine_reset>
+	<engine_reset_flags validate="yes" rt_feed="no"></engine_reset_flags>
+	<engine_binding pattern="RTLIM">
+        <binding_system_date absolute_date="@DATE@" date_format="dd/MM/yyyy" nb_days_shifter="0d"></binding_system_date>
+	</engine_binding>
+	<new_engine_info nb_days_shifter="0d" calendar="COMBINED"></new_engine_info>
+        <tick_input>
+        <tick_input_xml>
+        <file_full_path>@HOME@/live/lts/Ticks/Test/EmptyTickFile.xml</file_full_path>
+        </tick_input_xml>
+        </tick_input>
+	</engine_reset>
+	</jls_task>
+    </task>
+</mlc_lts>

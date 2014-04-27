@@ -1,0 +1,5 @@
+#-,${mlc.mlctask.unix.user},${mlc.app.server.1},${mlc.mlctask.home.directory.1}/live/etc/downloadFiles.ksh gdi_fxtarns
+-,${mlc.mlctask.unix.user},${mlc.app.server.1},${mlc.mlctask.home.directory.1}/live/etc/downloadFiles.ksh creditExposureTreasury
+-,${mlc.mlctask.unix.user},${mlc.app.server.1},${mlc.mlctask.home.directory.1}/live/etc/downloadFiles.ksh creditExposureLCorporate
+-,${mlc.mlctask.unix.user},${mlc.app.server.1},${mlc.mlctask.home.directory.1}/live/etc/downloadFiles.ksh creditExposureCorporate
+-,${mlc.mlctask.unix.user},${mlc.app.server.1},${mlc.mlctask.home.directory.1}/live/etc/downloadFiles.ksh creditExposureLTreasury

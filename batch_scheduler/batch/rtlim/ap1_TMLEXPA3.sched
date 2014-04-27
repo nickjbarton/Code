@@ -1,0 +1,3 @@
+-,${mlc.mlctask.unix.user},${mlc.app.server.1},${mlc.mlctask.home.directory.1}/live/etc/initialLTRSResetProcessing.ksh
+-,${mlc.mlctask.unix.user},${mlc.app.server.1},${mlc.mlctask.home.directory.1}/live/etc/partialReset.ksh rtlim creditExposureTreasuryLloyds
+-,${mlc.mlctask.unix.user},${mlc.app.server.1},${mlc.mlctask.home.directory.1}/live/etc/closingLTRSResetProcessing.ksh

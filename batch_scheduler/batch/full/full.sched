@@ -1,0 +1,5 @@
+1,-,15:15,ap1_TMLBGN00.sched
+2,1,-,ap1_TMLAUS01.sched
+3,1,-,ap1_TMLAUS02.sched
+4,1,-,ap1_TMLAUS03.sched
+5,2|3|4,19:10,ap2_TMLREP06.sched
